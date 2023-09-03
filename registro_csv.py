@@ -10,13 +10,17 @@ ventana.geometry("500x300")
 ventana.title("Registro en csv")
 
 # Creamos una lista vacia con cada uno de los campos a ser exportados a CSV
+
 nombre, apellido, telefono, mail, password = [], [], [], [], []
 
 # validar_telefono, solo admite el ingreso de numeros, no permite ingresar texto.
 
 # Inicio validaciones--------------------------------------------
 
+
 # validar_nombre: Valida que se introduzcan caracteres.
+
+
 def validar_nombre():
     nombre = nombre_valor.get()
     if len(nombre) == 0:
@@ -30,6 +34,8 @@ def validar_nombre():
         return True
 
 # validar_apellido: Valida que se introduzcan caracteres.
+
+
 def validar_apellido():
     apellido = apellido_valor.get()
     if len(apellido) == 0:
@@ -43,6 +49,8 @@ def validar_apellido():
         return True
 
 # validar_telefono: valida que se introduzcan numeros.
+
+
 def validar_telefono():
     telefono = telefono_valor.get()
     if len(telefono) == 0:
@@ -56,6 +64,8 @@ def validar_telefono():
         return True
 
 # validar_mail: valida que se introduzca el correo con '@' y '.'
+
+
 def validar_mail():
     mail = mail_valor.get()
     if len(mail) == 0:
@@ -69,6 +79,8 @@ def validar_mail():
         return True
 
 # validar_password: valida que se introduzcan al menos 3 caracteres
+
+
 def validar_password():
     password = password_valor.get()
     if len(password) == 0:
@@ -85,7 +97,7 @@ def validar_password():
 
 
 # La funcion agregar, toma lo ingresado por el usuario, lo agrega a las listas anteriores, limpia el formulario
-# para seguir agregando datos.
+# para seguir agregando datos y setea el fondo de la etiqueta con el color #F0F0F0 .
 def agregar():
 
     nombre.append(nombre_valor.get())
@@ -100,15 +112,16 @@ def agregar():
     mail_valor.delete(0, END)
     password_valor.delete(0, END)
 
-    status_nombre.configure(text="...esperando nombre")
-    status_apellido.configure(text="...esperando apellido")
-    status_telefono.configure(text="...esperando telefono")
-    status_mail.configure(text="...esperando mail")
-    status_password.configure(text="...esperando password")
+    status_nombre.configure(text="...esperando nombre", bg="#F0F0F0")
+    status_apellido.configure(text="...esperando apellido", bg="#F0F0F0")
+    status_telefono.configure(text="...esperando telefono",bg="#F0F0F0")
+    status_mail.configure(text="...esperando mail",bg="#F0F0F0")
+    status_password.configure(text="...esperando password",bg="#F0F0F0")
 
 # La funcion guardar genera un diccionario con los datos almacenados del formulario, completa los encabezados,
 # inserta los datos almacenados en las listas, genera un archivo csv con el nombre obligatorio1 y lo almacena en la
 # misma ubicacion en la que se ejecuta el archivo registro_csv.py
+
 
 def guardar():
     global nombre, apellido, telefono, mail, password
@@ -118,7 +131,8 @@ def guardar():
     messagebox.showinfo(message="Archivo guardado con éxito con el nombre obligatorio1.csv", title="Archivo guardado")
 
 # Elementos del formulario ----------------------------------
-# Se crean las etiquetas y los campos de entrada para los 5 elementos del formulario (nombre, apellido, telefono, mail y password)
+# Se crean las etiquetas y los campos de entrada para los 5 elementos del formulario (nombre, apellido, telefono,
+# mail y password)
 
 
 Label(text="Nombre", width=10, padx=10, pady=10).grid(row=0, column=0)
@@ -153,14 +167,10 @@ status_mail.grid(row=3, column=3)
 status_password = Label(text="...esperando password", width=25, padx=10, pady=10)
 status_password.grid(row=4, column=3)
 
-
-
 # Los botones agregar y guardar estan explicados en la definicion de sus funciones.
 
-add = Button(text="Agregar", command=agregar)
-add.grid(row=5, column=1, rowspan=2)
-save = Button(text="Guardar", command=guardar)
-save.grid(row=5, column=2, rowspan=2)
+Button(text="Agregar", command=agregar).grid(row=5, column=1, rowspan=2)
+Button(text="Guardar", command=guardar).grid(row=5, column=2, rowspan=2)
 
 # Fin de Elementos del formulario ----------------------------------
 
