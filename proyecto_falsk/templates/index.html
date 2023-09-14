@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block body %} <h1>{{ data.bienvenida }}</h1>
+<ul>
+    {% for c in data.lista %}
+    <li> {{ c }} </li>
+    {% endfor %}
+</ul>
+{% endblock %}
